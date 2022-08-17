@@ -82,7 +82,7 @@ body {
 }
 
 .active {
-    background-color: tomato;
+    background: tomato;
     transition: all 1s;
     color: #171717;
     border-radius: 5rem;

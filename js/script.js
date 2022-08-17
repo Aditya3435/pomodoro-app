@@ -33,7 +33,7 @@ let activeBar = 'pom';
 pomodoroInput.value = pomodoroTime;
 shortBreakInput.value = shortBreakTime;
 longBreakInput.value = longBreakTime;
-
+document.querySelector('.active').style.background = `${activeColor}`;
 
 setting.addEventListener('click', ()=> {
     settingContainer.classList.remove('hidden');
@@ -46,17 +46,60 @@ close.addEventListener('click', ()=> {
     container.classList.remove('hidden');
 })
 
+document.querySelector('.color-option-1').addEventListener('click', ()=> {
+    applyBtn.classList.add('color-option-1');
+    circle.classList.add('color-option-1');
+    document.querySelector('.color-option-1 svg').classList.add('visible');
+    document.querySelector('.color-option-2 svg').classList.remove('visible');
+    document.querySelector('.color-option-3 svg').classList.remove('visible'); 
+    applyBtn.classList.remove('color-option-2');
+    circle.classList.remove('color-option-2');
+    applyBtn.classList.remove('color-option-3');
+    circle.classList.remove('color-option-3');
+    activeColor = 'tomato';
+    console.log( `active colo is ${activeColor}`);
+    document.querySelector('.active').style.background = `${activeColor}`;
+})
+
+document.querySelector('.color-option-2').addEventListener('click', ()=> {
+    applyBtn.classList.add('color-option-2');
+    circle.classList.add('color-option-2');
+    document.querySelector('.color-option-2 svg').classList.add('visible');
+    document.querySelector('.color-option-1 svg').classList.remove('visible');
+    document.querySelector('.color-option-3 svg').classList.remove('visible');
+    applyBtn.classList.remove('color-option-1');
+    circle.classList.remove('color-option-1');
+    applyBtn.classList.remove('color-option-3');
+    circle.classList.remove('color-option-3');
+    activeColor = 'lightskyblue';
+    console.log( `active colo is ${activeColor}`);
+    document.querySelector('.active').style.background = `${activeColor}`;
+})
+
+document.querySelector('.color-option-3').addEventListener('click', ()=> {
+    applyBtn.classList.add('color-option-3');
+    circle.classList.add('color-option-3');
+    document.querySelector('.color-option-1 svg').classList.remove('visible');
+    document.querySelector('.color-option-2 svg').classList.remove('visible');
+    document.querySelector('.color-option-3 svg').classList.add('visible');
+    applyBtn.classList.remove('color-option-2');
+    circle.classList.remove('color-option-2');
+    applyBtn.classList.remove('color-option-1');
+    circle.classList.remove('color-option-1');
+    activeColor = 'violet';
+    console.log( `active colo is ${activeColor}`);
+    document.querySelector('.active').style.background = `${activeColor}`;
+})
+
 pomodoro.addEventListener('click', ()=> {
     activeBar = 'pom';
     startMinutes = pomodoroTime;
     time = startMinutes * 60;
     countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
+    
     pomodoro.classList.add('active');
     shortBreak.classList.remove('active');
-    longBreak.style.background = '#151931';
-    shortBreak.style.background = '#151931';
     longBreak.classList.remove('active');
-    document.querySelector('.active').style.background = `${activeColor}`;
 })
 
 shortBreak.addEventListener('click', ()=> {
@@ -67,21 +110,17 @@ shortBreak.addEventListener('click', ()=> {
     shortBreak.classList.add('active');
     pomodoro.classList.remove('active');    
     longBreak.classList.remove('active');
-    pomodoro.style.background = '#151931';
-    longBreak.style.background = '#151931';
-    document.querySelector('.active').style.background = `${activeColor}`;
+
 })
 longBreak.addEventListener('click', ()=> {
+
     activeBar = 'long';
     startMinutes = longBreakTime;
     time = startMinutes * 60;
     countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
     longBreak.classList.add('active');
     shortBreak.classList.remove('active');
-    pomodoro.style.background = '#151931';
-    shortBreak.style.background = '#151931';
     pomodoro.classList.remove('active');
-    document.querySelector('.active').style.background = `${activeColor}`;
 })
 
 
@@ -145,49 +184,7 @@ startBtn.addEventListener('click', ()=> {
 function myStop(myInterval) {
     clearInterval(myInterval);
   }
-document.querySelector('.color-option-1').addEventListener('click', ()=> {
-    applyBtn.classList.add('color-option-1');
-    circle.classList.add('color-option-1');
-    document.querySelector('.color-option-1 svg').classList.add('visible');
-    document.querySelector('.color-option-2 svg').classList.remove('visible');
-    document.querySelector('.color-option-3 svg').classList.remove('visible');
-    
-    applyBtn.classList.remove('color-option-2');
-    circle.classList.remove('color-option-2');
 
-    applyBtn.classList.remove('color-option-3');
-    circle.classList.remove('color-option-3');
-    activeColor = 'tomato';
-    console.log( `active colo is ${activeColor}`);
-})
-
-document.querySelector('.color-option-2').addEventListener('click', ()=> {
-    applyBtn.classList.add('color-option-2');
-    circle.classList.add('color-option-2');
-    document.querySelector('.color-option-2 svg').classList.add('visible');
-    document.querySelector('.color-option-1 svg').classList.remove('visible');
-    document.querySelector('.color-option-3 svg').classList.remove('visible');
-    applyBtn.classList.remove('color-option-1');
-    circle.classList.remove('color-option-1');
-    applyBtn.classList.remove('color-option-3');
-    circle.classList.remove('color-option-3');
-    activeColor = 'lightskyblue';
-    console.log( `active colo is ${activeColor}`);
-})
-
-document.querySelector('.color-option-3').addEventListener('click', ()=> {
-    applyBtn.classList.add('color-option-3');
-    circle.classList.add('color-option-3');
-    document.querySelector('.color-option-1 svg').classList.remove('visible');
-    document.querySelector('.color-option-2 svg').classList.remove('visible');
-    document.querySelector('.color-option-3 svg').classList.add('visible');
-    applyBtn.classList.remove('color-option-2');
-    circle.classList.remove('color-option-2');
-    applyBtn.classList.remove('color-option-1');
-    circle.classList.remove('color-option-1');
-    activeColor = 'violet';
-    console.log( `active colo is ${activeColor}`);
-})
 
 fontOption1.addEventListener('click', ()=> {
 
