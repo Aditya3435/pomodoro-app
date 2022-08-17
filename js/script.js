@@ -53,6 +53,8 @@ pomodoro.addEventListener('click', ()=> {
     countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
     pomodoro.classList.add('active');
     shortBreak.classList.remove('active');
+    longBreak.style.background = '#151931';
+    shortBreak.style.background = '#151931';
     longBreak.classList.remove('active');
     document.querySelector('.active').style.background = `${activeColor}`;
 })
@@ -65,6 +67,8 @@ shortBreak.addEventListener('click', ()=> {
     shortBreak.classList.add('active');
     pomodoro.classList.remove('active');    
     longBreak.classList.remove('active');
+    pomodoro.style.background = '#151931';
+    longBreak.style.background = '#151931';
     document.querySelector('.active').style.background = `${activeColor}`;
 })
 longBreak.addEventListener('click', ()=> {
@@ -74,6 +78,8 @@ longBreak.addEventListener('click', ()=> {
     countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
     longBreak.classList.add('active');
     shortBreak.classList.remove('active');
+    pomodoro.style.background = '#151931';
+    shortBreak.style.background = '#151931';
     pomodoro.classList.remove('active');
     document.querySelector('.active').style.background = `${activeColor}`;
 })
@@ -140,10 +146,8 @@ function myStop(myInterval) {
     clearInterval(myInterval);
   }
 document.querySelector('.color-option-1').addEventListener('click', ()=> {
-    
     applyBtn.classList.add('color-option-1');
     circle.classList.add('color-option-1');
-
     document.querySelector('.color-option-1 svg').classList.add('visible');
     document.querySelector('.color-option-2 svg').classList.remove('visible');
     document.querySelector('.color-option-3 svg').classList.remove('visible');
