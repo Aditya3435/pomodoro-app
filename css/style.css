@@ -224,7 +224,7 @@ body {
         width: 20rem;
         justify-content: center;
         align-items: center;
-        height: 35.5rem;
+        height: 37rem;
     }
     .setting-top {
         justify-content: baseline;
@@ -233,10 +233,10 @@ body {
     }
     .color-setting,.font-setting, .timer-setting {
         flex-direction: column;
-        gap: 0.2rem;
+        gap: 0.1rem;
     }
     .apply {
-        top: 34.5rem;
+        top: 35.5rem;
         left: 6.5rem;
     }
 }
