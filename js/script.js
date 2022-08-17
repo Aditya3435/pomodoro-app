@@ -16,6 +16,7 @@ const shortBreakInput = document.getElementById('short');
 const longBreakInput = document.getElementById('long');
 const applyBtn = document.querySelector('.apply');
 const circle = document.querySelector('.circle');
+const options = document.querySelector('.options');
 var fontOption1 = document.querySelector('.font-option-1');
 var fontOption2 = document.querySelector('.font-option-2');
 let multip;
@@ -47,6 +48,7 @@ close.addEventListener('click', ()=> {
 })
 
 document.querySelector('.color-option-1').addEventListener('click', ()=> {
+    options.style = 'background-color: #151931;'
     applyBtn.classList.add('color-option-1');
     circle.classList.add('color-option-1');
     document.querySelector('.color-option-1 svg').classList.add('visible');
@@ -62,6 +64,7 @@ document.querySelector('.color-option-1').addEventListener('click', ()=> {
 })
 
 document.querySelector('.color-option-2').addEventListener('click', ()=> {
+    options.style = 'background-color: #151931;'
     applyBtn.classList.add('color-option-2');
     circle.classList.add('color-option-2');
     document.querySelector('.color-option-2 svg').classList.add('visible');
@@ -78,6 +81,7 @@ document.querySelector('.color-option-2').addEventListener('click', ()=> {
 
 document.querySelector('.color-option-3').addEventListener('click', ()=> {
     applyBtn.classList.add('color-option-3');
+    options.style = 'background-color: #151931;'
     circle.classList.add('color-option-3');
     document.querySelector('.color-option-1 svg').classList.remove('visible');
     document.querySelector('.color-option-2 svg').classList.remove('visible');
@@ -89,38 +93,6 @@ document.querySelector('.color-option-3').addEventListener('click', ()=> {
     activeColor = 'violet';
     console.log( `active colo is ${activeColor}`);
     document.querySelector('.active').style.background = `${activeColor}`;
-})
-
-pomodoro.addEventListener('click', ()=> {
-    activeBar = 'pom';
-    startMinutes = pomodoroTime;
-    time = startMinutes * 60;
-    countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
-    
-    pomodoro.classList.add('active');
-    shortBreak.classList.remove('active');
-    longBreak.classList.remove('active');
-})
-
-shortBreak.addEventListener('click', ()=> {
-    activeBar = 'short';
-    startMinutes = shortBreakTime;
-    time = startMinutes * 60;
-    countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
-    shortBreak.classList.add('active');
-    pomodoro.classList.remove('active');    
-    longBreak.classList.remove('active');
-
-})
-longBreak.addEventListener('click', ()=> {
-
-    activeBar = 'long';
-    startMinutes = longBreakTime;
-    time = startMinutes * 60;
-    countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
-    longBreak.classList.add('active');
-    shortBreak.classList.remove('active');
-    pomodoro.classList.remove('active');
 })
 
 
@@ -152,9 +124,7 @@ var progressChecker;
 startBtn.addEventListener('click', ()=> {
     multip = parseFloat(360/time);
     if(started) {
-        startBtn.innerHTML = 'Start';
-        started = false;
-        myStop(progressChecker);
+        myStop(progressChecker);  
     }
     else {
         progressChecker = setInterval(()=> {
@@ -183,7 +153,49 @@ startBtn.addEventListener('click', ()=> {
 
 function myStop(myInterval) {
     clearInterval(myInterval);
+    started = false;
+    startBtn.innerHTML = 'Start';
+   
   }
+
+  pomodoro.addEventListener('click', ()=> {
+    myStop(progressChecker);
+    progresssBar.style.background = `${activeColor}`;
+    activeBar = 'pom';
+    startMinutes = pomodoroTime;
+    time = startMinutes * 60;
+    countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
+    
+    pomodoro.classList.add('active');
+    shortBreak.classList.remove('active');
+    longBreak.classList.remove('active');
+})
+
+shortBreak.addEventListener('click', ()=> {
+    myStop(progressChecker);
+    progresssBar.style.background = `${activeColor}`;
+    activeBar = 'short';
+    startMinutes = shortBreakTime;
+    time = startMinutes * 60;
+    countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
+    shortBreak.classList.add('active');
+    // shortBreak.style.background = `${activeColor}`;
+    pomodoro.classList.remove('active');    
+    longBreak.classList.remove('active');
+
+})
+longBreak.addEventListener('click', ()=> {
+    myStop(progressChecker);
+    progresssBar.style.background = `${activeColor}`;
+    activeBar = 'long';
+    startMinutes = longBreakTime;
+    time = startMinutes * 60;
+    countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
+    longBreak.classList.add('active');
+    shortBreak.classList.remove('active');
+    pomodoro.classList.remove('active');
+})
+
 
 
 fontOption1.addEventListener('click', ()=> {
