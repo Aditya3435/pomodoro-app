@@ -1,242 +1,251 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
 }
 
 body {
-    background-color: #1E2140;
+  background-color: #1e2140;
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .container {
-    display: flex;
-    gap: 3rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  gap: 3rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .top-heading {
-    font-family: 'Fredoka', sans-serif;
-    color: #fff;
-    margin-top: 2rem;
+  font-family: "Fredoka", sans-serif;
+  color: #fff;
+  margin-top: 2rem;
 }
 
 .back-circle {
-    position: relative;
-    /* background: #141835; */
-    border-radius: 50%;
-    height: 20rem;
-    background: linear-gradient(100deg, #141835, #262958);
-    width: 20rem;
-    box-shadow: -0.5rem -0.5rem 1rem #262958;
+  position: relative;
+  /* background: #141835; */
+  border-radius: 50%;
+  height: 20rem;
+  background: linear-gradient(100deg, #141835, #262958);
+  width: 20rem;
+  box-shadow: -0.5rem -0.5rem 1rem #262958;
 }
 .circle {
-    background: tomato;
-    position: absolute;
-    height: 18rem;
-    width: 18rem;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  background: tomato;
+  position: absolute;
+  height: 18rem;
+  width: 18rem;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .inner-circle {
-    background: linear-gradient(100deg, #141835, #262958);
-    position: absolute;
-    height: 16.5rem;
-    width: 16.5rem;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  background: linear-gradient(100deg, #141835, #262958);
+  position: absolute;
+  height: 16.5rem;
+  width: 16.5rem;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .options {
-    display: flex;
-    background-color: #151931;
-    border-radius: 2rem;
-    cursor: pointer;
+  display: flex;
+  background-color: #151931;
+  border-radius: 2rem;
+  cursor: pointer;
 }
 .btn {
-    font-family: 'Fredoka', sans-serif;
-    padding: 1rem;
+  font-family: "Fredoka", sans-serif;
+  padding: 1rem;
 }
 .start {
-    text-transform: uppercase;
-    letter-spacing: 0.5rem;
-    font-size: 1rem;
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family:sans-serif;
-    cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  font-size: 1rem;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: sans-serif;
+  cursor: pointer;
 }
 
 .active {
-    background: tomato;
-    transition: all 1s;
-    color: #171717;
-    border-radius: 5rem;
+  background: tomato;
+  transition: all 0.8s;
+  color: #171717 !important;
+  border-radius: 5rem;
 }
 
 .timer {
-    font-family: 'Rubik Maze', sans-serif;
-    font-size: 2.7rem;
-    font-weight: 800;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  font-family: "Rubik Maze", sans-serif;
+  font-size: 2.7rem;
+  font-weight: 800;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.setting, #close {
-    cursor: pointer;
+.setting,
+#close {
+  cursor: pointer;
 }
 .setting-container {
-    background-color: #FFFFFF;
-    margin: auto;
-    padding: 1.5rem;
-    width: 30rem;
-    height: 22rem;
-    border-radius: 2rem;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 2rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  margin: auto;
+  padding: 1.5rem;
+  width: 30rem;
+  height: 22rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.setting-container p, .setting-container h1 {
-    color: #000;
-    font-family: 'Fredoka', sans-serif;
-    text-transform: uppercase;
+.setting-container p,
+.setting-container h1 {
+  color: #000;
+  font-family: "Fredoka", sans-serif;
+  text-transform: uppercase;
 }
 
 .setting-top {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .setting-top h1 {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 .timer-set p {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 .setting-top:after {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 .timer-setting {
-    display: flex;
+  display: flex;
 }
-.font-setting, .color-setting{
-    display: flex;
-    justify-content: space-between;
+.font-setting,
+.color-setting {
+  display: flex;
+  justify-content: space-between;
 }
-.font-setting h1, .color-setting h1 {
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-    text-transform: capitalize;
+.font-setting h1,
+.color-setting h1 {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  text-transform: capitalize;
 }
-.font-options, .color-options {
-    display: flex;
-    gap: 1rem;
-    font-family: 'Fredoka', sans-serif;
+.font-options,
+.color-options {
+  display: flex;
+  gap: 1rem;
+  font-family: "Fredoka", sans-serif;
 }
 .color-options {
-    gap: 0.8rem;
+  gap: 0.8rem;
 }
-.font-option, .color-option {
-    background-color: #ccc;
-    /* font-size: 20px; */
-    padding: 0.5rem 0.6rem;
-    border-radius:5rem;
-    cursor: pointer;
+.font-option,
+.color-option {
+  background-color: #ccc;
+  /* font-size: 20px; */
+  padding: 0.5rem 0.6rem;
+  border-radius: 5rem;
+  cursor: pointer;
 }
 .color-option svg {
-    visibility: hidden;
+  visibility: hidden;
 }
 .font-option {
-    padding: 0.65rem 0.65rem;
+  padding: 0.65rem 0.65rem;
 }
 .color-option-1 {
-    background-color: tomato !important;
+  background-color: tomato !important;
 }
 .color-option-2 {
-    background-color: lightskyblue !important;
+  background-color: lightskyblue !important;
 }
 .color-option-3 {
-    background-color: violet !important;
+  background-color: violet !important;
 }
 .font-option-1 {
-    font-weight: 200 !important;
+  font-weight: 200 !important;
 }
 .font-option-2 {
-    font-style:italic !important;
+  font-style: italic !important;
 }
 .font-option-3 {
-    font-weight: 900 !important;
+  font-weight: 900 !important;
 }
-.visible{
-    visibility: visible !important;
+.visible {
+  visibility: visible !important;
 }
 .active-font {
-    background-color: #1E2140;
-    color: #fff;
+  background-color: #1e2140;
+  color: #fff;
 }
 .timer-set input {
-    color: #000;
-    margin: 0.5rem 0.1rem;
-    border-radius: 1rem;
-    padding: 0.5rem 0;
-    width: 9rem;
-    background-color: #ccc;
-    border: 2px solid #141835;
-    font-size: 0.86rem;
+  color: #000;
+  margin: 0.5rem 0.1rem;
+  border-radius: 1rem;
+  padding: 0.5rem 0;
+  width: 9rem;
+  background-color: #ccc;
+  border: 2px solid #141835;
+  font-size: 0.86rem;
 }
 .apply {
-    position: inherit;
-    cursor: pointer;
-    top: 93%;
-    left: 38%;
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-    background-color: tomato;
+  position: inherit;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  top: 93%;
+  left: 38%;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  background-color: tomato;
 }
 
 .bar-color {
-    background-color: #151931 !important;
-    color: #fff;
+  background-color: #151931 !important;
+  color: #fff !important;
 }
 
 @media screen and (max-width: 605px) {
-    .setting-container {
-        width: 20rem;
-        justify-content: center;
-        align-items: center;
-        height: 37rem;
-    }
-    .setting-top {
-        justify-content: baseline;
-        align-items:baseline;
-        gap: 2rem;
-    }
-    .color-setting,.font-setting, .timer-setting {
-        flex-direction: column;
-        gap: 0.1rem;
-    }
-    .apply {
-        top: 35.5rem;
-        left: 6.5rem;
-    }
+  .setting-container {
+    width: 20rem;
+    justify-content: center;
+    align-items: center;
+    height: 37rem;
+  }
+  .setting-top {
+    justify-content: baseline;
+    align-items: baseline;
+    gap: 2rem;
+  }
+  .color-setting,
+  .font-setting,
+  .timer-setting {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .apply {
+    top: 35.5rem;
+    left: 6.5rem;
+  }
 }
