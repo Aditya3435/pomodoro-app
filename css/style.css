@@ -170,15 +170,12 @@ body {
   border-radius: 5rem;
   cursor: pointer;
 }
-.color-option svg {
-  visibility: hidden;
-}
 .font-option {
-  
   padding: 0.4rem 0.4rem;
 }
 .color-option-1 {
   background-color: tomato ;
+  color: #000;
 }
 .color-option-2 {
   background-color: lightskyblue ;
@@ -227,29 +224,6 @@ body {
   color: #fff ;
 }
 
-/* @media screen and (max-width: 605px) {
-  .setting-container {
-    width: 20rem;
-    justify-content: center;
-    align-items: center;
-    height: 37rem;
-  }
-  .setting-top {
-    justify-content: baseline;
-    align-items: baseline;
-    gap: 2rem;
-  }
-  .color-setting,
-  .font-setting,
-  .timer-setting {
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-  .apply {
-    top: 35.5rem;
-    left: 6.5rem;
-  }
-} */
 .hidden {
   display: none;
   
@@ -257,7 +231,6 @@ body {
 .color-option svg {
   visibility: hidden;
 }
-.visible {
-  visibility: visible;
-  color: #000;
+.color-option .visible {
+  visibility:visible;
 }

@@ -17,15 +17,15 @@ const longBreakInput = document.getElementById('long');
 const applyBtn = document.querySelector('.apply');
 const circle = document.querySelector('.circle');
 const options = document.querySelector('.options');
-var fontOption1 = document.querySelector('.font-option-1');
-var fontOption2 = document.querySelector('.font-option-2');
+const colorOption1 = document.querySelector('.color-option-1');
+const colorOption2 = document.querySelector('.color-option-2');
+const colorOption3 = document.querySelector('.color-option-3');
+
 let multip;
 let active = document.querySelector('.active');
-var fontOption3 = document.querySelector('.font-option-3');
 let root = document.querySelector(':root');
 // var activeColor = window.getComputedStyle(active, null).getPropertyValue('background');
 let activeColor;
-console.log(activeColor);
 let pomodoroTime = 25;
 countDownEl.textContent = pomodoroTime < 10 ? `0${pomodoroTime}:00` : `${pomodoroTime}:00`;
 let shortBreakTime = 10;
@@ -59,37 +59,33 @@ close.addEventListener('click', () => {
     container.style = `filter: blur(0)`;
 })
 
-document.querySelector('.color-option-1').addEventListener('click', () => {
-    document.querySelector('').classList.add('visible');
-    getSiblings(document.querySelector('.color-option-1 svg')).forEach((siblings => {
-        siblings.classList.remove('visible');
-    }))
-    activeColor = 'tomato';
-    console.log(`active colo is ${activeColor}`);
-    // root.style.setProperty('--theme-color', 'tomato');
-    console.log(window.getComputedStyle(active, null).getPropertyValue('background'));
-})
 
-document.querySelector('.color-option-2').addEventListener('click', () => {
-    document.querySelector('.color-option-2 svg').classList.add('visible');
-    getSiblings(document.querySelector('.color-option-2 svg')).forEach((siblings => {
-        siblings.classList.remove('visible');
-    }))
-    activeColor = 'lightskyblue';
-    console.log(`active colo is ${activeColor}`);
+colorOption1.addEventListener('click', () => {
+    document.querySelector('.color-option-1 svg').classList.add('visible');
+    document.querySelector('.color-option-2 svg').classList.remove('visible');
+    document.querySelector('.color-option-3 svg').classList.remove('visible');
+    activeColor = window.getComputedStyle(colorOption1, null).getPropertyValue(('background-color'));
     root.style = `--active-color: ${activeColor} `;
-    console.log(window.getComputedStyle(active, null).getPropertyValue('background'));
 })
 
-document.querySelector('.color-option-3').addEventListener('click', () => {
+
+colorOption2.addEventListener('click', () => {
     document.querySelector('.color-option-1 svg').classList.remove('visible');
-    getSiblings(document.querySelector('.color-option-3 svg')).forEach((siblings => {
-        siblings.classList.remove('visible');
-    }))
-    activeColor = 'violet';
-    console.log(`active colo is ${activeColor}`);
+    document.querySelector('.color-option-2 svg').classList.add('visible');
+    document.querySelector('.color-option-3 svg').classList.remove('visible');
+    activeColor = window.getComputedStyle(colorOption2, null).getPropertyValue(('background-color'));
     root.style = `--active-color: ${activeColor} `;
-    console.log(window.getComputedStyle(active, null).getPropertyValue('background'));
+})
+
+
+
+
+colorOption3.addEventListener('click', () => {
+    document.querySelector('.color-option-1 svg').classList.remove('visible');
+    document.querySelector('.color-option-2 svg').classList.remove('visible');
+    document.querySelector('.color-option-3 svg').classList.add('visible');
+    activeColor = window.getComputedStyle(colorOption3, null).getPropertyValue(('background-color'));
+    root.style = `--active-color: ${activeColor} `;
 })
 
 
@@ -113,7 +109,6 @@ applyBtn.addEventListener('click', () => {
         countDownEl.textContent = longBreakTime < 10 ? `0${longBreakTime}:00` : `${longBreakTime}:00`;
         time = longBreakTime * 60;
     }
-    // console.log(multip);
 })
 
 
@@ -136,7 +131,6 @@ startBtn.addEventListener('click', () => {
                 countDownEl.textContent = `${minutes}:${seconds}`;
                 time--;
                 if (activeColor === undefined) activeColor = 'tomato';
-                // console.log(activeColor);  
                 progresssBar.style.background = `conic-gradient(
                     ${activeColor} ${time * multip}deg,
                     #141835 ${time * multip}deg
@@ -153,13 +147,12 @@ function myStop(myInterval) {
     clearInterval(myInterval);
     started = false;
     startBtn.innerHTML = 'Start';
+    progresssBar.style.background = `${activeColor}`;
 
 }
 
 pomodoro.addEventListener('click', () => {
-    active.style = `background: ${activeColor} `;
     myStop(progressChecker);
-    progresssBar.style.background = `${activeColor}`;
     activeBar = 'pom';
     startMinutes = pomodoroTime;
     time = startMinutes * 60;
@@ -172,7 +165,6 @@ pomodoro.addEventListener('click', () => {
 
 shortBreak.addEventListener('click', () => {
     myStop(progressChecker);
-    progresssBar.style.background = `${activeColor}`;
     activeBar = 'short';
     startMinutes = shortBreakTime;
     time = startMinutes * 60;
@@ -184,9 +176,7 @@ shortBreak.addEventListener('click', () => {
 
 })
 longBreak.addEventListener('click', () => {
-    active.style = `background: ${activeColor} `;
     myStop(progressChecker);
-    progresssBar.style.background = `${activeColor}`;
     activeBar = 'long';
     startMinutes = longBreakTime;
     time = startMinutes * 60;
