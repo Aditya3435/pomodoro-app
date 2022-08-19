@@ -17,9 +17,13 @@ const longBreakInput = document.getElementById('long');
 const applyBtn = document.querySelector('.apply');
 const circle = document.querySelector('.circle');
 const options = document.querySelector('.options');
+const fontOption1 = document.querySelector('.font-option-1');
+const fontOption2 = document.querySelector('.font-option-2');
+const fontOption3 = document.querySelector('.font-option-3');
 const colorOption1 = document.querySelector('.color-option-1');
 const colorOption2 = document.querySelector('.color-option-2');
 const colorOption3 = document.querySelector('.color-option-3');
+
 
 let multip;
 let active = document.querySelector('.active');
