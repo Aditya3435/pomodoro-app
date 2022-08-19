@@ -22,6 +22,7 @@ var fontOption2 = document.querySelector('.font-option-2');
 let multip;
 let active = document.querySelector('.active');
 var fontOption3 = document.querySelector('.font-option-3');
+let root = document.querySelector(':root');
 // var activeColor = window.getComputedStyle(active, null).getPropertyValue('background');
 let activeColor;
 console.log(activeColor);
@@ -39,67 +40,62 @@ shortBreakInput.value = shortBreakTime;
 longBreakInput.value = longBreakTime;
 active.style.background = `${activeColor}`;
 
+const getSiblings = (TargetNode) =>
+    [...TargetNode.parentNode.children].filter(
+        (siblings) => siblings !== TargetNode
+    );
+
+
 setting.addEventListener('click', () => {
     settingContainer.classList.remove('hidden');
-    container.classList.add('hidden');
+    container.style = `filter: blur(5px)`;
 
 })
 
 close.addEventListener('click', () => {
     settingContainer.classList.add('hidden');
     container.classList.remove('hidden');
+    myStop(progressChecker);
+    container.style = `filter: blur(0)`;
 })
 
 document.querySelector('.color-option-1').addEventListener('click', () => {
-    applyBtn.classList.add('color-option-1');
-    circle.classList.add('color-option-1');
-    document.querySelector('.color-option-1 svg').classList.add('visible');
-    document.querySelector('.color-option-2 svg').classList.remove('visible');
-    document.querySelector('.color-option-3 svg').classList.remove('visible');
-    applyBtn.classList.remove('color-option-2');
-    circle.classList.remove('color-option-2');
-    applyBtn.classList.remove('color-option-3');
-    circle.classList.remove('color-option-3');
+    document.querySelector('').classList.add('visible');
+    getSiblings(document.querySelector('.color-option-1 svg')).forEach((siblings => {
+        siblings.classList.remove('visible');
+    }))
     activeColor = 'tomato';
     console.log(`active colo is ${activeColor}`);
-    active.style = `background: ${activeColor} !important`;
+    // root.style.setProperty('--theme-color', 'tomato');
     console.log(window.getComputedStyle(active, null).getPropertyValue('background'));
 })
 
 document.querySelector('.color-option-2').addEventListener('click', () => {
-    applyBtn.classList.add('color-option-2');
-    circle.classList.add('color-option-2');
     document.querySelector('.color-option-2 svg').classList.add('visible');
-    document.querySelector('.color-option-1 svg').classList.remove('visible');
-    document.querySelector('.color-option-3 svg').classList.remove('visible');
-    applyBtn.classList.remove('color-option-1');
-    circle.classList.remove('color-option-1');
-    applyBtn.classList.remove('color-option-3');
-    circle.classList.remove('color-option-3');
+    getSiblings(document.querySelector('.color-option-2 svg')).forEach((siblings => {
+        siblings.classList.remove('visible');
+    }))
     activeColor = 'lightskyblue';
     console.log(`active colo is ${activeColor}`);
-    active.style = `background: ${activeColor} !important`;
+    root.style = `--active-color: ${activeColor} `;
     console.log(window.getComputedStyle(active, null).getPropertyValue('background'));
 })
 
 document.querySelector('.color-option-3').addEventListener('click', () => {
-    applyBtn.classList.add('color-option-3');
-    circle.classList.add('color-option-3');
     document.querySelector('.color-option-1 svg').classList.remove('visible');
-    document.querySelector('.color-option-2 svg').classList.remove('visible');
-    document.querySelector('.color-option-3 svg').classList.add('visible');
-    applyBtn.classList.remove('color-option-2');
-    circle.classList.remove('color-option-2');
-    applyBtn.classList.remove('color-option-1');
-    circle.classList.remove('color-option-1');
+    getSiblings(document.querySelector('.color-option-3 svg')).forEach((siblings => {
+        siblings.classList.remove('visible');
+    }))
     activeColor = 'violet';
     console.log(`active colo is ${activeColor}`);
-    active.style = `background: ${activeColor} !important`;
+    root.style = `--active-color: ${activeColor} `;
     console.log(window.getComputedStyle(active, null).getPropertyValue('background'));
 })
 
 
 applyBtn.addEventListener('click', () => {
+    container.style = `filter: blur(0)`;
+    myStop(progressChecker);
     settingContainer.classList.add('hidden');
     container.classList.remove('hidden');
     pomodoroTime = pomodoroInput.value;
@@ -117,7 +113,6 @@ applyBtn.addEventListener('click', () => {
         countDownEl.textContent = longBreakTime < 10 ? `0${longBreakTime}:00` : `${longBreakTime}:00`;
         time = longBreakTime * 60;
     }
-
     // console.log(multip);
 })
 
@@ -141,7 +136,7 @@ startBtn.addEventListener('click', () => {
                 countDownEl.textContent = `${minutes}:${seconds}`;
                 time--;
                 if (activeColor === undefined) activeColor = 'tomato';
-                // console.log(activeColor);
+                // console.log(activeColor);  
                 progresssBar.style.background = `conic-gradient(
                     ${activeColor} ${time * multip}deg,
                     #141835 ${time * multip}deg
@@ -162,17 +157,17 @@ function myStop(myInterval) {
 }
 
 pomodoro.addEventListener('click', () => {
-    active.style = `background: ${activeColor} !important`;
+    active.style = `background: ${activeColor} `;
     myStop(progressChecker);
     progresssBar.style.background = `${activeColor}`;
     activeBar = 'pom';
     startMinutes = pomodoroTime;
     time = startMinutes * 60;
     countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
-
     pomodoro.classList.add('active');
-    shortBreak.classList.remove('active');
-    longBreak.classList.remove('active');
+    getSiblings(pomodoro).forEach((siblings => {
+        siblings.classList.remove('active');
+    }))
 })
 
 shortBreak.addEventListener('click', () => {
@@ -183,13 +178,13 @@ shortBreak.addEventListener('click', () => {
     time = startMinutes * 60;
     countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
     shortBreak.classList.add('active');
-    // shortBreak.style.background = `${activeColor}`;
-    pomodoro.classList.remove('active');
-    longBreak.classList.remove('active');
+    getSiblings(shortBreak).forEach((siblings => {
+        siblings.classList.remove('active');
+    }))
 
 })
 longBreak.addEventListener('click', () => {
-    active.style = `background: ${activeColor} !important`;
+    active.style = `background: ${activeColor} `;
     myStop(progressChecker);
     progresssBar.style.background = `${activeColor}`;
     activeBar = 'long';
@@ -197,8 +192,9 @@ longBreak.addEventListener('click', () => {
     time = startMinutes * 60;
     countDownEl.textContent = startMinutes < 10 ? `0${startMinutes}:00` : `${startMinutes}:00`;
     longBreak.classList.add('active');
-    shortBreak.classList.remove('active');
-    pomodoro.classList.remove('active');
+    getSiblings(longBreak).forEach((siblings => {
+        siblings.classList.remove('active');
+    }))
 })
 
 
@@ -206,8 +202,9 @@ longBreak.addEventListener('click', () => {
 fontOption1.addEventListener('click', () => {
 
     fontOption1.classList.add('active-font');
-    fontOption2.classList.remove('active-font');
-    fontOption3.classList.remove('active-font');
+    getSiblings(fontOption1).forEach((siblings => {
+        siblings.classList.remove('active-font');
+    }))
     document.body.classList.add('font-option-1');
     document.body.classList.remove('font-option-2');
     document.body.classList.remove('font-option-3');
@@ -215,8 +212,9 @@ fontOption1.addEventListener('click', () => {
 
 fontOption2.addEventListener('click', () => {
     fontOption2.classList.add('active-font');
-    fontOption1.classList.remove('active-font');
-    fontOption3.classList.remove('active-font');
+    getSiblings(fontOption2).forEach((siblings => {
+        siblings.classList.remove('active-font');
+    }))
     document.body.classList.add('font-option-2');
     document.body.classList.remove('font-option-1');
     document.body.classList.remove('font-option-3');
@@ -224,8 +222,9 @@ fontOption2.addEventListener('click', () => {
 fontOption3.addEventListener('click', () => {
 
     fontOption3.classList.add('active-font');
-    fontOption2.classList.remove('active-font');
-    fontOption1.classList.remove('active-font');
+    getSiblings(fontOption3).forEach((siblings => {
+        siblings.classList.remove('active-font');
+    }))
     document.body.classList.add('font-option-3');
     document.body.classList.remove('font-option-1');
     document.body.classList.remove('font-option-2');
