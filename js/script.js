@@ -53,13 +53,12 @@ const getSiblings = (TargetNode) =>
 setting.addEventListener('click', () => {
     settingContainer.classList.remove('hidden');
     container.style = `filter: blur(5px)`;
-
 })
 
 close.addEventListener('click', () => {
     settingContainer.classList.add('hidden');
     container.classList.remove('hidden');
-    myStop(progressChecker);
+    // myStop(progressChecker);
     container.style = `filter: blur(0)`;
 })
 
